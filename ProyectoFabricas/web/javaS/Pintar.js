@@ -1,3 +1,5 @@
+/* global creador */
+
 var arma       = [];
 var escudo     = [];
 var botas      = [];
