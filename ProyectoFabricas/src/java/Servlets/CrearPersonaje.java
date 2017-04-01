@@ -5,11 +5,12 @@
  */
 package Servlets;
 
-import Builder.CreadordePersonajes;
-import Builder.ImplementacionPjs;
-import Builder.Personajes;
-import Fabrica.metodoFabrica;
+
+import Builder.Director;
+import Builder.pjBuilderFabrica;
+import Prototype.Prototipos.PersonajePrototipo;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,22 +21,35 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CrearPersonaje extends HttpServlet {
     
-    private CreadordePersonajes creador;
+    private Director creador;
+    //array que guardara todos los productos
+    private ArrayList<PersonajePrototipo> pjs= new ArrayList();
+    private PersonajePrototipo principal;
        
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        creador=new CreadordePersonajes();
-        creador.setConstructor(new ImplementacionPjs());
-        String tipo= request.getParameter("comboBox");        
-        creador.ConstruirPj( tipo , 50,50);
-//aplicamos el prototype
+        String tipo= request.getParameter("comboBox"); 
         int copias= Integer.parseInt(request.getParameter("copias")) ; 
+
+//aplicamos el patron builder        
+        creador=new Director();
+        creador.setPersonajeBuilder(new pjBuilderFabrica().getConstructor(tipo));
+        creador.ConstruirPersonaje();
+        principal= creador.getPersonaje();
+        
+        pjs.add(principal);
+        
+//aplicamos el prototype
         for(int i=1;i<=copias;i++){
-           creador.ConstruirPj(new metodoFabrica().getPersonajeProt(tipo).clone(), i*200, 50);
+           pjs.add(principal.clone());
+           pjs.get(i).setCordenadax(i*200);
         }
         request.getSession().setAttribute("Script",  this.envScript());
         response.sendRedirect("Vistapersonaje.jsp");
     }
+    
+    
+    
     
     public String envScript(){
         String script="";
@@ -57,9 +71,8 @@ public class CrearPersonaje extends HttpServlet {
         script=script+( "var canvas = document.getElementById('miCanvas');"+
                         " var ctx = canvas.getContext('2d');\n");
         
-        Personajes mispjs=creador.getPersonajes();
         
-        for(int i = 0;i<mispjs.getPjsArmas().size();i++){
+        for(int i = 0;i<pjs.size();i++){
             
         inicializacion=         "        arma["+i+"] =   new Image();\n" +
                                 "        escudo["+i+"]   =   new Image();\n" +
@@ -71,14 +84,15 @@ public class CrearPersonaje extends HttpServlet {
             
             
             
-            script=script+"x["+i+"]="+mispjs.getCordenadax().get(i) +";";
-            script=script+"y["+i+"]="+mispjs.getCordenaday().get(i) +";";
+            script=script+"x["+i+"]="+pjs.get(i).getCordenadax() +";";
+            script=script+"y["+i+"]="+pjs.get(i).getCordenaday()+";";
             
-            script=script+"arma["+i+"].src='"+ mispjs.getPjsArmas().get(i).getImagenSrc()+"';\n";
-            script=script+"escudo["+i+"].src='"+ mispjs.getPjsEscudos().get(i).getImagenSrc()+"';\n";
-            script=script+"botas["+i+"].src='"+ mispjs.getPjsBotas().get(i).getImagenSrc()+"';\n";
-            script=script+"traje["+i+"].src='"+ mispjs.getPjsTrajes().get(i).getImagenSrc()+"';\n";
-            script=script+"casco["+i+"].src='"+ mispjs.getPjsCascos().get(i).getImagenSrc()+"';\n";        
+            script=script+"arma["+i+"].src='"+ pjs.get(i).getPjsArmas().getImagenSrc()+"';\n";
+            
+            script=script+"escudo["+i+"].src='"+ pjs.get(i).getPjsEscudos().getImagenSrc()+"';\n";
+            script=script+"botas["+i+"].src='"+ pjs.get(i).getPjsBotas().getImagenSrc()+"';\n";
+            script=script+"traje["+i+"].src='"+ pjs.get(i).getPjsTrajes().getImagenSrc()+"';\n";
+            script=script+"casco["+i+"].src='"+ pjs.get(i).getPjsCascos().getImagenSrc()+"';\n";        
             
             script=script+                    
             "            traje["+i+"].onload = function(){\n" +

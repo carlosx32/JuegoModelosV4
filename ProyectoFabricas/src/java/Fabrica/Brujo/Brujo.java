@@ -3,62 +3,62 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Prototype.Prototipos;
-
+package Fabrica.Brujo;
 
 import Fabrica.ArmaAbs;
 import Fabrica.BotasAbs;
+import Fabrica.Brujo.BotasDelOlvido;
+import Fabrica.Brujo.CascoDelOlvido;
+import Fabrica.Brujo.EscudoDelOlvido;
+import Fabrica.Brujo.TrajeDelOlvido;
+import Fabrica.Brujo.VaraDelOlvido;
 import Fabrica.CascoAbs;
 import Fabrica.EscudoAbs;
 import Fabrica.FabricaPjAbs;
-import Fabrica.Guerrero.BotasDelInfinito;
-import Fabrica.Guerrero.CascoDePuas;
-import Fabrica.Guerrero.Cota;
-import Fabrica.Guerrero.Espada;
-import Fabrica.Guerrero.ShieldWarrior;
 import Fabrica.TrajeAbs;
+import Prototype.Prototipos.PersonajePrototipo;
+
 
 /**
  *
  * @author carandy
  */
-public class Guerrero extends PrototipoPj  {
-    static private Guerrero singletonWarrior;
+public class Brujo implements FabricaPjAbs  {
+    static private Brujo singletonWizzard;
     
-    private Guerrero(){
+    public Brujo(){
         super();
     }
     
     public static FabricaPjAbs getSingleton() {
-        if(singletonWarrior==null){
-            singletonWarrior=new Guerrero();
+        if(singletonWizzard==null){
+            singletonWizzard=new Brujo();
         }
-        return singletonWarrior;       
+        return singletonWizzard;       
     }
-
     @Override
     public CascoAbs crearCasco() {
-        return new CascoDePuas();        
+        return new CascoDelOlvido();
     }
 
     @Override
     public BotasAbs crearBotas() {
-      return new BotasDelInfinito();
+        return new BotasDelOlvido();
     }
 
     @Override
     public EscudoAbs crearEscudo() {
-       return new ShieldWarrior();
+        return new EscudoDelOlvido();
     }
+
     @Override
     public ArmaAbs crearArma() {
-        return new Espada();
+        return new VaraDelOlvido();
     }
 
     @Override
     public TrajeAbs crearTraje() {
-        return new Cota();
+        return new TrajeDelOlvido();
     }
-    
     
 }

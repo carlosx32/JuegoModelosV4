@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Prototype.Prototipos;
+package Fabrica.Sacerdote;
 
 
 import Fabrica.ArmaAbs;
@@ -12,18 +12,24 @@ import Fabrica.CascoAbs;
 import Fabrica.EscudoAbs;
 import Fabrica.FabricaPjAbs;
 import Fabrica.Sacerdote.BotasEspirituales;
+import Fabrica.Sacerdote.BotasEspirituales;
+import Fabrica.Sacerdote.CascoEspiritual;
 import Fabrica.Sacerdote.CascoEspiritual;
 import Fabrica.Sacerdote.CorazaEspiritual;
+import Fabrica.Sacerdote.CorazaEspiritual;
+import Fabrica.Sacerdote.EscudoEspiritual;
 import Fabrica.Sacerdote.EscudoEspiritual;
 import Fabrica.Sacerdote.LibroDeHechizos;
+import Fabrica.Sacerdote.LibroDeHechizos;
 import Fabrica.TrajeAbs;
+import Prototype.Prototipos.PersonajePrototipo;
 
 
 /**
  *
  * @author carandy
  */
-public class Sacerdote extends PrototipoPj {
+public class Sacerdote implements FabricaPjAbs  {
     static private Sacerdote singletonSac;
     
     private Sacerdote(){

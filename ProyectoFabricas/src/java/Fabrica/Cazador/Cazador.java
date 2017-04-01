@@ -3,24 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Prototype.Prototipos;
+package Fabrica.Cazador;
 
 import Fabrica.ArmaAbs;
 import Fabrica.BotasAbs;
 import Fabrica.CascoAbs;
 import Fabrica.Cazador.ArcoDelPantano;
+import Fabrica.Cazador.ArcoDelPantano;
+import Fabrica.Cazador.BotasDelPantano;
 import Fabrica.Cazador.BotasDelPantano;
 import Fabrica.Cazador.CascoDelPantano;
+import Fabrica.Cazador.CascoDelPantano;
 import Fabrica.Cazador.EscudoDelPantano;
+import Fabrica.Cazador.EscudoDelPantano;
+import Fabrica.Cazador.PecheraDelPantano;
 import Fabrica.Cazador.PecheraDelPantano;
 import Fabrica.EscudoAbs;
 import Fabrica.FabricaPjAbs;
 import Fabrica.TrajeAbs;
+import Prototype.Prototipos.PersonajePrototipo;
 /**
  *
  * @author carandy
  */
-public class Cazador extends PrototipoPj {
+public class Cazador implements FabricaPjAbs   {
     static private Cazador singletonHunter;
 
     public static FabricaPjAbs getSingleton() {
