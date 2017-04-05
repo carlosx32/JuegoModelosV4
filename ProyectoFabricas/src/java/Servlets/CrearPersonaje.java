@@ -44,13 +44,12 @@ public class CrearPersonaje extends HttpServlet {
            pjs.add(principal.clone());
            pjs.get(i).setCordenadax(i*200);
         }
-        request.getSession().setAttribute("Script",  this.envScript());
+        
+        request.getSession().setAttribute("Arreglo", pjs);
+      //  request.getSession().setAttribute("Script",  this.envScript());
         response.sendRedirect("Vistapersonaje.jsp");
     }
-    
-    
-    
-    
+    /*
     public String envScript(){
         String script="";
         
@@ -114,5 +113,6 @@ public class CrearPersonaje extends HttpServlet {
         }
         script= script+"ctx.strokeRect(0,0,900, 900); }";
         return  script;
-    }        
+    }
+    */
 }

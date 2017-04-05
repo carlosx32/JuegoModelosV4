@@ -101,7 +101,7 @@ public  class PersonajePrototipo implements Cloneable {
         
     @Override
     public PersonajePrototipo clone(){
-                PersonajePrototipo clonedpj = null;
+            PersonajePrototipo clonedpj = null;
         try {
             clonedpj = (PersonajePrototipo) super.clone();
         } catch (CloneNotSupportedException e) {
