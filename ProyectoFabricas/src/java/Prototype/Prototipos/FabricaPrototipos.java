@@ -5,10 +5,21 @@
  */
 package Prototype.Prototipos;
 
+import Builder.Director;
+import Builder.pjBuilderFabrica;
+
 /**
  *
  * @author Estudiantes
  */
 public class FabricaPrototipos {
-    //creamos 4 objetos 
+
+    private Director creador;
+        
+    public  PersonajePrototipo obtenerPj(String tipo) {
+        creador=new Director();
+        creador.setPersonajeBuilder(new pjBuilderFabrica().getConstructor(tipo));
+        creador.ConstruirPersonaje();
+        return creador.getPersonaje();
+    }    
 }

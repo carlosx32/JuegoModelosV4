@@ -1,3 +1,9 @@
+html { overflow:hidden;
+       overflow-y:hidden;
+       overflow-x:hidden;
+}
+
+
 header{
     width: 103%;
     background-color: #660000;
@@ -60,6 +66,7 @@ h2{
     border:1px solid black;
     padding-bottom:-20em;
     margin-bottom:-1em;
+    border: solid 1px blue;
 }
 a{
     text-decoration:none;

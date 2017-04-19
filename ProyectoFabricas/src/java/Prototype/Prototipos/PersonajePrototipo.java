@@ -97,6 +97,15 @@ public  class PersonajePrototipo implements Cloneable {
     public Integer getAlto() {
         return Alto;
     }
+    public String dibujarJs(){
+        return "dibujarPersonaje('"+pjsArmas.getImagenSrc()+"',"
+                                +"'"+pjsEscudos.getImagenSrc()+"',"
+                                +"'"+pjsBotas.getImagenSrc()+"',"
+                                +"'"+pjsTrajes.getImagenSrc()+"',"                
+                                +"'"+pjsCascos.getImagenSrc()+"',"
+                                +Cordenadax+","+Cordenaday+","+Ancho+","+Alto
+                +");";
+    };
     
         
     @Override

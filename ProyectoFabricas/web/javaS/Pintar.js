@@ -1,21 +1,22 @@
-function dibujarPersonaje(srcArma, srcEscudo, srcBotas, srcTraje, srcCasco, posx, posy, anchoP, altoP){
+
+function dibujarPersonaje(srcArma, srcEscudo, srcBotas, srcTraje, srcCasco, posx, posy, ancho, alto){
+    var canvas = document.getElementById('miCanvas');
+    var ctx = canvas.getContext('2d');
+
     var arma    =   new Image();
     var escudo  =   new Image();
     var botas   =   new Image();
     var traje   =   new Image();
     var casco  =   new Image();
-    var x,y;
-    var alto=altoP;
-    var ancho=anchoP; 
-    var canvas = document.getElementById('miCanvas');
-    var ctx = canvas.getContext('2d');
-        x=posx;
-        y=posy;
-        arma.src    =   srcArma;
-        escudo.src  =   srcEscudo;
-        botas.src   =   srcBotas;
-        traje.src   =   srcTraje;;
-        casco.src   =   srcCasco;        
+    var x=posx,y=posy;
+    arma.src    =   srcArma;
+    escudo.src  =   srcEscudo;
+    botas.src   =   srcBotas;
+    traje.src   =   srcTraje;
+    casco.src   =   srcCasco;
+    //ancho=50;
+    //alto=50;
+    //
         traje.onload = function(){
         ctx.drawImage(traje,x,y,ancho,alto);  // imagen completa en la posición (0,0) \n" +
         };
@@ -31,5 +32,8 @@ function dibujarPersonaje(srcArma, srcEscudo, srcBotas, srcTraje, srcCasco, posx
         botas.onload = function(){
         ctx.drawImage(botas,x,y+alto,ancho,alto);  // imagen completa en la posición (0,0) \n" +
         };     
-    //  ctx.strokeRect(0,0,900, 900); 
+      ctx.strokeRect(posx,posy,ancho,alto);
+};
+function limpiarCnv(){
+    
 };
