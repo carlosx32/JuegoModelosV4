@@ -14,13 +14,48 @@
     <script type="text/javascript" src="javaS/Pintar.js"></script>
   </head>
 
-  <body onload="
-        <%for(int i=0;i<pjs.size();i++){out.print(pjs.get(i).dibujarJs());}  %> 
-    ">
+  <body onload=" <%for(int i=0;i<pjs.size();i++){out.print(pjs.get(i).dibujarJs());}  %> 
+        " onkeydown="
+                    if(window.event.keyCode==40){
+                        console.log('abajo');
+                        limpiar();
+                        <%for(int i=0;i<pjs.size();i++){
+                            pjs.get(i).moverJs(0,50);
+                            out.print(pjs.get(i).dibujarJs());
+                        }%>
+                    }                    
+                    else if(window.event.keyCode==37){
+                        console.log('izquierda');
+                        limpiar();
+                        <%for(int i=0;i<pjs.size();i++){
+                            pjs.get(i).moverJs(-50,0);
+                            out.print(pjs.get(i).dibujarJs());
+                        }%>
+                    }                    
+                    else if(window.event.keyCode==38){
+                        console.log('ariba');
+                        limpiar();
+                        <%for(int i=0;i<pjs.size();i++){
+                            pjs.get(i).moverJs(0,-50);
+                            out.print(pjs.get(i).dibujarJs());
+                        }%>
+                    }                    
+                    else if(window.event.keyCode==39){
+                        console.log('Derecha');
+                        limpiar();
+                        <%for(int i=0;i<pjs.size();i++){
+                            pjs.get(i).moverJs(0,-50);
+                            out.print(pjs.get(i).dibujarJs());
+                        }%>
+                    }
+                    
+            "
+            onmousemove="//console.log(window.event.clientX +' , '+ window.event.clientY);"
+            
       <header>
           <!--   <h1><a href="index.jsp"> World Of CaNi </a></h1> -->
-        </header>
+      </header>
       <br>
-      <canvas  id="miCanvas" width="800" height="600" >Su navegador no soporta Canvas.</canvas> 
+      <canvas  id="miCanvas" width="900" height="900" >Su navegador no soporta Canvas.</canvas> 
       </body>
 </html>

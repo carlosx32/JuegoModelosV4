@@ -1,8 +1,6 @@
-
 function dibujarPersonaje(srcArma, srcEscudo, srcBotas, srcTraje, srcCasco, posx, posy, ancho, alto){
     var canvas = document.getElementById('miCanvas');
     var ctx = canvas.getContext('2d');
-
     var arma    =   new Image();
     var escudo  =   new Image();
     var botas   =   new Image();
@@ -14,26 +12,41 @@ function dibujarPersonaje(srcArma, srcEscudo, srcBotas, srcTraje, srcCasco, posx
     botas.src   =   srcBotas;
     traje.src   =   srcTraje;
     casco.src   =   srcCasco;
-    //ancho=50;
-    //alto=50;
-    //
         traje.onload = function(){
-        ctx.drawImage(traje,x,y,ancho,alto);  // imagen completa en la posición (0,0) \n" +
+            ctx.drawImage(traje,x,y,ancho,alto);  // imagen completa en la posición (0,0) \n" +
         };
         casco.onload = function(){
-        ctx.drawImage(casco,x,y-alto,ancho,alto);  // imagen completa en la posición (0,0) \n" +
+            ctx.drawImage(casco,x,y-alto,ancho,alto);  // imagen completa en la posición (0,0) \n" +
         };
         arma.onload = function(){
-        ctx.drawImage(arma,x-ancho,y,ancho,alto);  // imagen completa en la posición (0,0) \n" +
+            ctx.drawImage(arma,x-ancho,y,ancho,alto);  // imagen completa en la posición (0,0) \n" +
         };
         escudo.onload = function(){
-        ctx.drawImage(escudo,x+ancho,y,ancho,alto);  // imagen completa en la posición (0,0) \n" +
+            ctx.drawImage(escudo,x+ancho,y,ancho,alto);  // imagen completa en la posición (0,0) \n" +
         };
         botas.onload = function(){
-        ctx.drawImage(botas,x,y+alto,ancho,alto);  // imagen completa en la posición (0,0) \n" +
+            ctx.drawImage(botas,x,y+alto,ancho,alto);  // imagen completa en la posición (0,0) \n" +
         };     
-      ctx.strokeRect(posx,posy,ancho,alto);
 };
-function limpiarCnv(){
-    
+function limpiar(){
+    var canvas = document.getElementById('miCanvas');
+    var ctx = canvas.getContext('2d');
+    ctx.fillStyle='#f0f0f0';
+    ctx.fillRect(0,0,900,900);      
 };
+
+function mover(){
+                    if(window.event.keyCode==40){
+                        console.log('abajo');  
+                    }                    
+                    if(window.event.keyCode==37){
+                        console.log('izquierda');
+                    }                    
+                    if(window.event.keyCode==38){
+                        console.log('ariba');
+                    }                    
+                    if(window.event.keyCode==39){
+                        console.log('Derecha');
+                    }
+};
+   

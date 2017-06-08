@@ -21,8 +21,8 @@ public  class PersonajePrototipo implements Cloneable {
     private CascoAbs pjsCascos;
     private EscudoAbs pjsEscudos;
     private TrajeAbs pjsTrajes;
-    private Integer Cordenadax;
-    private Integer Cordenaday;
+    private Integer Cordenadax=0;
+    private Integer Cordenaday=0;
     private Integer Ancho;
     private Integer Alto;
 
@@ -106,6 +106,13 @@ public  class PersonajePrototipo implements Cloneable {
                                 +Cordenadax+","+Cordenaday+","+Ancho+","+Alto
                 +");";
     };
+    public void moverJs(int ax,int ay){
+        this.Cordenadax=Cordenadax+ax;
+        this.Cordenaday=Cordenaday+ay;
+        System.out.print("Personaje en:"+Cordenadax +", "+Cordenaday);
+    };
+    
+    
     
         
     @Override
